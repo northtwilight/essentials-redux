@@ -10,9 +10,20 @@ import UIKit
 // Singleton with a capital S
 
 
+// Main module
 
 
+extension ApiClient {
+    func login(completion : (LoggedInUser) -> Void) {}
+}
 
+extension ApiClient {
+    func loadFeed(completion: ([FeedItem]) -> Void) {}
+}
+
+extension ApiClient {
+    func loadFollowers(completion: ([Follower]) -> Void) {}
+}
 
 // API module
 
@@ -27,23 +38,18 @@ class ApiClient {
     
 }
 
-// class MockApiClient: ApiClient {}
-
-
 // Login module
 
 struct LoggedInUser {}
 
-extension ApiClient {
-    func login(completion : (LoggedInUser) -> Void) {}
-}
 
 
 class LoginViewController: UIViewController {
-    var api = ApiClient.shared
+    // Login closure embedded in a closure callback
+    var login: (((LoggedInUser) -> Void) -> Void)?
     
     func didTapLoginButton() {
-        api.login() { user in
+        login? { user in
             // show next screen
         }
     }
@@ -54,32 +60,29 @@ class LoginViewController: UIViewController {
 struct FeedItem {}
 
 class FeedViewController: UIViewController {
-    var api = ApiClient.shared
+    var loadFeed: ((([FeedItem]) -> Void) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        api.loadFeed { loadedItems in
+        loadFeed? { loadedItems in
             // update feed page with items
         }
     }
 }
 
-extension ApiClient {
-    func loadFeed(completion: ([FeedItem]) -> Void) {}
-}
 
 // Followers module
+
 struct Follower {}
+
 class FollowersViewController: UIViewController {
-    var api = ApiClient.shared
+    var loadFollowers: ((([Follower]) -> Void) -> Void)?
     
     override func viewDidLoad() {
-        api.loadFollowers { followers in
+        loadFollowers? { followers in
             // update UI with followers found
         }
     }
 }
 
-extension ApiClient {
-    func loadFollowers(completion: ([Follower]) -> Void) {}
-}
+
