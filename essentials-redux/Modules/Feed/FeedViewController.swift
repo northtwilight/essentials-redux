@@ -43,13 +43,12 @@ class RemoteWithLocalFallbackFeedLoader: FeedLoader {
     
     func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
         if Reachability.networkAvailable {
-            remote.loadFeed { loadedItems in
-                // do something
-            }
+            
+            remote.loadFeed(completion: completion)
+            
         } else {
-            local.loadFeed { loadedItems in
-                // do something
-            }
+            
+            local.loadFeed(completion: completion)
         }
     }
 }
