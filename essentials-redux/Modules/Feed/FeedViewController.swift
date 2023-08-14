@@ -15,6 +15,45 @@ protocol FeedLoader {
     func loadFeed(completion: @escaping ([FeedItem]) -> Void) -> Void
 }
 
+// Dumb concrete dependency
+struct Reachability {
+    static let networkAvailable = false
+}
+
+class RemoteFeedLoader: FeedLoader {
+    func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
+        // do something
+    }
+}
+
+class LocalFeedLoader: FeedLoader {
+    func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
+        // do something
+    }
+}
+
+class RemoteWithLocalFallbackFeedLoader: FeedLoader {
+    let remote: RemoteFeedLoader
+    let local: LocalFeedLoader
+    
+    init(remote: RemoteFeedLoader, local: LocalFeedLoader) {
+        self.remote = remote
+        self.local = local
+    }
+    
+    func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
+        if Reachability.networkAvailable {
+            remote.loadFeed { loadedItems in
+                // do something
+            }
+        } else {
+            local.loadFeed { loadedItems in
+                // do something
+            }
+        }
+    }
+}
+
 class FeedViewController: UIViewController {
     var loader: FeedLoader!
     
@@ -31,14 +70,3 @@ class FeedViewController: UIViewController {
     }
 }
 
-class RemoteFeedLoader: FeedLoader {
-    func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
-        // do something
-    }
-}
-
-class LocalFeedLoader: FeedLoader {
-    func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
-        // do something
-    }
-}
