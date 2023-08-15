@@ -42,14 +42,9 @@ class RemoteWithLocalFallbackFeedLoader: FeedLoader {
     }
     
     func loadFeed(completion: @escaping ([FeedItem]) -> Void) {
-        if Reachability.networkAvailable {
-            
-            remote.loadFeed(completion: completion)
-            
-        } else {
-            
-            local.loadFeed(completion: completion)
-        }
+        let load = Reachability.networkAvailable ?
+            remote.loadFeed : local.loadFeed
+        load(completion)
     }
 }
 
@@ -69,3 +64,16 @@ class FeedViewController: UIViewController {
     }
 }
 
+// Sample usage
+
+let remoteVC = FeedViewController(loader: RemoteFeedLoader())
+let localVC = FeedViewController(loader: LocalFeedLoader())
+
+let remoteWithLocalVC = FeedViewController(loader: RemoteWithLocalFallbackFeedLoader(
+    remote: RemoteFeedLoader(),
+    local: LocalFeedLoader()))
+
+let vc4 = FeedViewController()
+vc4.loader = RemoteWithLocalFallbackFeedLoader(
+    remote: RemoteFeedLoader(),
+    local: LocalFeedLoader())
