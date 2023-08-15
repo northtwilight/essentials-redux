@@ -7,13 +7,8 @@
 
 import UIKit
 
-// Feed module
 
-struct FeedItem {}
 
-protocol FeedLoader {
-    func loadFeed(completion: @escaping ([FeedItem]) -> Void) -> Void
-}
 
 // Dumb concrete dependency
 struct Reachability {
