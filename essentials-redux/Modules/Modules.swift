@@ -10,25 +10,23 @@ import UIKit
 
 // Main module
 
-extension ApiClient {
-    func login(completion : (LoggedInUser) -> Void) {}
-}
-
-extension ApiClient: FeedLoader   {
-    func loadFeed(completion: ([FeedItem]) -> Void) {}
-}
-
-extension ApiClient {
-    func loadFollowers(completion: ([Follower]) -> Void) {}
-}
-
-// API module
-
 class ApiClient {
     // Static lets are constant and lazy-loaded by default
     static let shared = ApiClient()
     
     func execute(_: URLRequest, completion: (Data) -> Void) {}
+}
+
+extension ApiClient {
+    func login(completion : (LoggedInUser) -> Void) {}
+}
+
+extension ApiClient: FeedLoader {
+    func loadFeed(completion: @escaping (LoadFeedResult) -> Void) -> Void {}
+}
+
+extension ApiClient {
+    func loadFollowers(completion: ([Follower]) -> Void) {}
 }
 
 // Login module

@@ -13,7 +13,6 @@
 		77A55FC92A82D3DE002C689F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A55FC72A82D3DE002C689F /* Main.storyboard */; };
 		77A55FCB2A82D3E1002C689F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77A55FCA2A82D3E1002C689F /* Assets.xcassets */; };
 		77A55FCE2A82D3E1002C689F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A55FCC2A82D3E1002C689F /* LaunchScreen.storyboard */; };
-		77A55FD72A82D419002C689F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A55FD62A82D419002C689F /* Singleton.swift */; };
 		77F52DC72A8AEEDF009A4E47 /* Modules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F52DC62A8AEEDF009A4E47 /* Modules.swift */; };
 		77F52DCA2A8AEF38009A4E47 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F52DC92A8AEF38009A4E47 /* FeedViewController.swift */; };
 		77F52DCC2A8B0059009A4E47 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F52DCB2A8B0059009A4E47 /* FeedLoader.swift */; };
@@ -29,7 +28,6 @@
 		77A55FCA2A82D3E1002C689F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77A55FCD2A82D3E1002C689F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77A55FCF2A82D3E1002C689F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77A55FD62A82D419002C689F /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		77F52DC62A8AEEDF009A4E47 /* Modules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modules.swift; sourceTree = "<group>"; };
 		77F52DC92A8AEF38009A4E47 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		77F52DCB2A8B0059009A4E47 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				77F52DC52A8AEEBA009A4E47 /* Modules */,
-				77A55FD52A82D409002C689F /* Singletons */,
 				77A55FC12A82D3DE002C689F /* AppDelegate.swift */,
 				77A55FC32A82D3DE002C689F /* SceneDelegate.swift */,
 				77A55FC52A82D3DE002C689F /* ViewController.swift */,
@@ -77,14 +74,6 @@
 				77A55FCF2A82D3E1002C689F /* Info.plist */,
 			);
 			path = "essentials-redux";
-			sourceTree = "<group>";
-		};
-		77A55FD52A82D409002C689F /* Singletons */ = {
-			isa = PBXGroup;
-			children = (
-				77A55FD62A82D419002C689F /* Singleton.swift */,
-			);
-			path = Singletons;
 			sourceTree = "<group>";
 		};
 		77F52DC52A8AEEBA009A4E47 /* Modules */ = {
@@ -180,7 +169,6 @@
 				77F52DCC2A8B0059009A4E47 /* FeedLoader.swift in Sources */,
 				77A55FC62A82D3DE002C689F /* ViewController.swift in Sources */,
 				77F52DC72A8AEEDF009A4E47 /* Modules.swift in Sources */,
-				77A55FD72A82D419002C689F /* Singleton.swift in Sources */,
 				77F52DCE2A8B009E009A4E47 /* FeedItem.swift in Sources */,
 				77A55FC22A82D3DE002C689F /* AppDelegate.swift in Sources */,
 				77F52DCA2A8AEF38009A4E47 /* FeedViewController.swift in Sources */,
